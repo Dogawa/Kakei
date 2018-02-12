@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Kakei</string>
+    <!--MainActivity-->
+    <string name="add_bill">Add</string>
+    <!--AddBillActivity-->
+    <string name="add_bill_money">money</string>
+    <string name="add_bill_date">date</string>
+    <string name="add_bill_add">add</string>
+    <string name="add_bill_genre">genre</string>
+    <string name="add_bill_about">about</string>
 </resources>
