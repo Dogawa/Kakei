@@ -26,5 +26,12 @@
         android:layout_height="wrap_content"
         android:text="@string/add_bill"
         />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcv_bill_list"
+        android:layout_below="@id/btn_main_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
