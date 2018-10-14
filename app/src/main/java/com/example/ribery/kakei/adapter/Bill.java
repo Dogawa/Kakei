@@ -12,4 +12,7 @@ public class Bill {
         this.about = about;
         this.money = money;
     }
+    public String toString() {
+        return date + genre + money + about;
+    }
 }

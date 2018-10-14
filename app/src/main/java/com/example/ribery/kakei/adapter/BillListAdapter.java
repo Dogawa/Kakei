@@ -15,9 +15,9 @@ import java.util.ArrayList;
  */
 
 public class BillListAdapter extends RecyclerView.Adapter<BillListAdapter.ViewHolder> {
-    public ArrayList<Bill> bills = null;
-    public BillListAdapter(ArrayList<Bill> bills) {
-        this.bills = bills;
+    public ArrayList<Bill> mBills = null;
+    public BillListAdapter(ArrayList<Bill> mBills) {
+        this.mBills = mBills;
     }
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.bill_item,viewGroup,false);
@@ -27,14 +27,14 @@ public class BillListAdapter extends RecyclerView.Adapter<BillListAdapter.ViewHo
     //获取数据的数量
     @Override
     public int getItemCount() {
-        return bills.size();
+        return mBills.size();
     }
     //将数据与界面进行绑定的操作
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        viewHolder.tv_item_date.setText(bills.get(position).date);
-        viewHolder.tv_item_genre.setText(bills.get(position).genre);
-        viewHolder.tv_item_money.setText(bills.get(position).money);
+        viewHolder.tv_item_date.setText(mBills.get(position).date);
+        viewHolder.tv_item_genre.setText(mBills.get(position).genre);
+        viewHolder.tv_item_money.setText(mBills.get(position).money);
     }
     //自定义的ViewHolder，持有每个Item的的所有界面元素
     public static class ViewHolder extends RecyclerView.ViewHolder {

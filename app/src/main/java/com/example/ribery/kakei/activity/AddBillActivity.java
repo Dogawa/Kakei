@@ -20,6 +20,7 @@ import com.example.ribery.kakei.dbHelper.DBHelper;
  */
 
 public class AddBillActivity extends Activity {
+    String TAG = "AddBillActivity";
     EditText etv_add_bill_money;
     DatePicker dpk_add_bill_date;
     EditText etv_add_bill_genre;
@@ -60,7 +61,9 @@ public class AddBillActivity extends Activity {
                 insertValues.put(DBContract.KakeiEntry.COLUMN_NAME_GENRE, genreValue);
                 insertValues.put(DBContract.KakeiEntry.COLUMN_NAME_ABOUT, aboutValue);
                 long newRowId = db.insert(DBContract.KakeiEntry.TABLE_NAME, null, insertValues);
-                Log.v("tag", newRowId + " newRowId");
+                AddBillActivity.this.setResult(1, null);
+                Log.d(TAG," newRowId  " + newRowId );
+                AddBillActivity.this.finish();
             }
         });
     }
@@ -69,7 +72,7 @@ public class AddBillActivity extends Activity {
         String dateValue = "";
         int month = dpk_add_bill_date.getMonth() + 1;
         dateValue = dpk_add_bill_date.getYear() + "-" + month + "-" +dpk_add_bill_date.getDayOfMonth();
-        Log.v("tag", dateValue);
+        Log.d(TAG, "date " + dateValue);
         return dateValue;
     }
 }
