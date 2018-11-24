@@ -9,9 +9,9 @@ package com.example.ribery.kakei.activity;
         import android.support.v7.widget.DividerItemDecoration;
         import android.support.v7.widget.LinearLayoutManager;
         import android.support.v7.widget.RecyclerView;
+        import android.support.v7.widget.helper.ItemTouchHelper;
         import android.util.Log;
         import android.view.View;
-        import android.widget.ArrayAdapter;
         import android.widget.Button;
         import android.widget.Toast;
 
@@ -41,6 +41,30 @@ public class MainActivity extends Activity {
         dbHelper = new DBHelper(this);
         db = dbHelper.getReadableDatabase();
         initialViewItems();
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.Callback() {
+            @Override
+            public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+                Log.d(TAG, "getMovementFlags");
+                int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+                int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
+                return makeMovementFlags(0, swipeFlags);
+            }
+
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                Log.d(TAG, "onMove");
+                return true;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                Log.d(TAG, "onSwiped");
+                int position = viewHolder.getAdapterPosition();
+                bills.remove(position);
+                adapter.notifyItemRemoved(position);
+            }
+        });
+        itemTouchHelper.attachToRecyclerView(rcv_bill_list);
     }
 
     @Override
