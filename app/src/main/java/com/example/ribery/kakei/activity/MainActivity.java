@@ -6,6 +6,7 @@ package com.example.ribery.kakei.activity;
         import android.database.sqlite.SQLiteDatabase;
         import android.os.Bundle;
         import android.os.Handler;
+        import android.support.v7.widget.DividerItemDecoration;
         import android.support.v7.widget.LinearLayoutManager;
         import android.support.v7.widget.RecyclerView;
         import android.util.Log;
@@ -57,6 +58,8 @@ public class MainActivity extends Activity {
         rcv_bill_list = (RecyclerView) this.findViewById(R.id.rcv_bill_list);
         rcv_bill_list.setHasFixedSize(true);
         rcv_bill_list.setLayoutManager(layoutManager);
+        rcv_bill_list.addItemDecoration(new DividerItemDecoration(
+                this, DividerItemDecoration.VERTICAL));
         bills = new ArrayList<>();
         bills.addAll(getDataFromDB());
         adapter = new BillListAdapter(bills);
